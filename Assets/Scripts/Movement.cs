@@ -23,16 +23,20 @@ public class Movement : MonoBehaviour
     {
         if (cc.isGrounded)
         {
-            
+            anim.enabled = true;
             moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                anim.Play("Dizzy");
+                
                 moveDirection.y = jumpSpeed;
             }
+        }
+        if(!cc.isGrounded)
+        {
+          anim.enabled = false;
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
