@@ -8,8 +8,11 @@ public class PlayerDeath : MonoBehaviour
    {
         if(collision.gameObject.transform.CompareTag("Player"))
         {
-            Debug.Log("You Died");
-            collision.gameObject.GetComponent<PlayerAlive>().isAlive = false;
+            if (collision.gameObject.GetComponent<PlayerAlive>().isAlive == true)
+            {
+                Debug.Log("You Died");
+                collision.gameObject.GetComponent<PlayerAlive>().isAlive = false;
+            }
         }
    }
 }

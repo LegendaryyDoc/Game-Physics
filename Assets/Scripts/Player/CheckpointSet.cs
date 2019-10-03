@@ -8,7 +8,7 @@ public class CheckpointSet : MonoBehaviour
     {
         if(collision.gameObject.transform.CompareTag("Player"))
         {
-            gameObject.GetComponent<PlayerAlive>().spawnPoint = this.transform.position;
+            collision.gameObject.GetComponent<PlayerAlive>().spawnPoint = gameObject.transform.position;
         }
     }
 }
