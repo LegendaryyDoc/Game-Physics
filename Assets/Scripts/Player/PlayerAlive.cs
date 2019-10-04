@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerAlive : MonoBehaviour
 {
-    public float deathFadeSpeed = .1f;
-    public float reviveFadeSpeed = .2f;
-
-    private bool fadeIn = false;
     private MeshRenderer player;
     private Movement movement;
 
     public bool isAlive;
-    [HideInInspector]public Vector3 spawnPoint;
+    public Vector3 spawnPoint;
 
     // Start is called before the first frame update
     void Start()
