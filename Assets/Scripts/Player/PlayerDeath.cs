@@ -10,7 +10,6 @@ public class PlayerDeath : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<PlayerAlive>().isAlive == true)
             {
-                Debug.Log("You Died");
                 collision.gameObject.GetComponent<PlayerAlive>().isAlive = false;
             }
         }
