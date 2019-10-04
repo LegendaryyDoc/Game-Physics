@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerAlive : MonoBehaviour
 {
-    private MeshRenderer player;
-    private Movement movement;
-
     public bool isAlive;
     public Vector3 spawnPoint;
+    public int health = 3;
+
+    private MeshRenderer player;
+    private Movement movement;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,19 @@ public class PlayerAlive : MonoBehaviour
     {
         if(!isAlive)
         {
-            movement.enabled = false;
-            gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-            gameObject.transform.position = spawnPoint;
+            if (health > 0)
+            {
+                movement.enabled = false;
+                gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+                gameObject.transform.position = spawnPoint;
 
-            isAlive = !isAlive;
-            movement.enabled = true;
+                isAlive = !isAlive;
+                movement.enabled = true;
+            }
+            else if(health <= 0)
+            {
+                
+            }
         }
     }
 }

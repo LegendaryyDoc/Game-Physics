@@ -14,6 +14,7 @@ public class PlayerDeath : MonoBehaviour
             {
                 Debug.Log("Dead");
                 pl.isAlive = false;
+                pl.health -= 1;
             }
         }
     }
