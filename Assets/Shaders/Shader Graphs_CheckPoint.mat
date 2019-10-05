@@ -23,8 +23,8 @@ Material:
     - Vector1_4EFE4A35: 2
     - Vector1_8B92DF56: 3
     m_Colors:
-    - Color_2894C75A: {r: 1, g: 1, b: 1, a: 0}
-    - Color_78104D38: {r: 0.29411766, g: 0.3764706, b: 0.27058825, a: 0}
+    - Color_2894C75A: {r: 1, g: 0, b: 0, a: 0}
+    - Color_78104D38: {r: 0, g: 0, b: 0, a: 0}
     - Color_AB712059: {r: 0, g: 0, b: 0, a: 0}
-    - Color_D619829: {r: 0.07450981, g: 1, b: 0, a: 0}
+    - Color_D619829: {r: 1, g: 1, b: 1, a: 0}
     - Vector2_2127F5C3: {r: 3, g: 3, b: 0, a: 0}

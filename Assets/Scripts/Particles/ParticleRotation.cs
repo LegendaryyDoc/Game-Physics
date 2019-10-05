@@ -14,7 +14,7 @@ public class ParticleRotation : MonoBehaviour
     private void Start()
     {
         Debug.Log(pSystem.transform.rotation);
-        if(pSystem.transform.rotation.z - maxRotation.z > pSystem.transform.rotation.z - minRotation.z)
+        if(pSystem.transform.rotation.eulerAngles.z - maxRotation.z > pSystem.transform.rotation.eulerAngles.z - minRotation.z)
         {
             rotationChange = rotateSpeed;
         }
@@ -27,13 +27,11 @@ public class ParticleRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(pSystem.transform.rotation);
-
-        if (pSystem.transform.rotation.z > maxRotation.z)
+        if (pSystem.transform.rotation.eulerAngles.z > maxRotation.z)
         {
             rotationChange = -rotateSpeed;
         }
-        else if(pSystem.transform.rotation.z < minRotation.z)
+        else if(pSystem.transform.rotation.eulerAngles.z < minRotation.z)
         {
             rotationChange = rotateSpeed;
         }

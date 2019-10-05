@@ -5545,6 +5545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed2a1e1b92912340a79b9008a7713d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkPointReachedColor: {r: 0.115027346, g: 0.4245283, b: 0, a: 0}
+  checkPoint: {fileID: 551735775}
 --- !u!65 &551735777
 BoxCollider:
   m_ObjectHideFlags: 0
