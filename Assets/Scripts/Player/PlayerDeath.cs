@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-   private void OnCollisionEnter(Collision collision)
-   {
-        if(collision.gameObject.transform.CompareTag("Player"))
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.transform.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerAlive>().isAlive == true)
+            PlayerAlive pl = collision.transform.root.gameObject.GetComponent<PlayerAlive>();
+
+            if (pl.isAlive == true)
             {
-                collision.gameObject.GetComponent<PlayerAlive>().isAlive = false;
+                Debug.Log("Dead");
+                pl.isAlive = false;
+                pl.health -= 1;
             }
         }
-   }
+    }
 }

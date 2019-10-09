@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerAlive : MonoBehaviour
 {
-    public float deathFadeSpeed = .1f;
-    public float reviveFadeSpeed = .2f;
+    public bool isAlive;
+    public Vector3 spawnPoint;
+    public int health = 3;
 
-    private bool fadeIn = false;
     private MeshRenderer player;
     private Movement movement;
-
-    public bool isAlive;
-    [HideInInspector]public Vector3 spawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +25,19 @@ public class PlayerAlive : MonoBehaviour
     {
         if(!isAlive)
         {
-            movement.enabled = false;
-            gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-            gameObject.transform.position = spawnPoint;
+            if (health > 0)
+            {
+                movement.enabled = false;
+                gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+                gameObject.transform.position = spawnPoint;
 
-            isAlive = !isAlive;
-            movement.enabled = true;
+                isAlive = !isAlive;
+                movement.enabled = true;
+            }
+            else if(health <= 0)
+            {
+                
+            }
         }
     }
 }
