@@ -18,22 +18,34 @@ public class RBMovement : MonoBehaviour
 
     void Update()
     {
-        Collider groundDist = GetComponent<Collider>();
-        float dist = 1;
-        if (Physics.Raycast(groundDist.transform.position, Vector3.down, dist))
+        //Debug.DrawRay(transform.position, Vector3.down);
+        //float dist = .1f;
+        //if (Physics.CheckCapsule(transform.position, Vector3.down, dist))
+        //{
+        //    isGrounded = true;
+        //}
+        //else
+        //{
+        //    isGrounded = false;
+        //}
+        RaycastHit ray;
+        if(Physics.Raycast(transform.position,Vector3.down,out ray))
         {
-            isGrounded = true;
+            if(ray.transform.tag == ("Floor"))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
         }
-        else
-        {
-            isGrounded = false;
-        }
-        
         if (isGrounded)
         {
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
             anim.enabled = true;
+            Debug.Log(anim.enabled);
             rb.useGravity = false;
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
@@ -46,20 +58,48 @@ public class RBMovement : MonoBehaviour
             }
 
 
-            if (isGrounded == false) { anim.enabled = false; rb.useGravity = true; Debug.Log("Floating"); }
+          
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rb.AddForce(0,10,0, ForceMode.Impulse);
-
+                rb.velocity = new Vector3(rb.velocity.x, 20, rb.velocity.z);
             }
+
+
             Vector3 movementVec = new Vector3(0, 0, v);
             movementVec = transform.TransformDirection(movementVec);
             movementVec = movementVec.normalized * speed * Time.deltaTime;
-            Quaternion newRot = Quaternion.Euler(gameObject.transform.rotation.x, h * speed, gameObject.transform.rotation.z);
-
-            rb.MoveRotation(rb.rotation * newRot.normalized);
             rb.MovePosition(transform.position + movementVec);
+
+
+
+            Quaternion newRot = Quaternion.Euler(gameObject.transform.rotation.x, h * speed, gameObject.transform.rotation.z);
+            rb.MoveRotation(rb.rotation * newRot.normalized);
         }
+            if (isGrounded == false)
+            {
+                anim.enabled = false; rb.useGravity = true; Debug.Log("Floating");
+            }
     }
+   
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.transform.tag == ("Floor"))
+    //    {
+    //    isGrounded = true;
+    //    Debug.Log("Grounded");
+    //    }
+
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.transform.tag != ("Floor"))
+    //    {
+    //        isGrounded = false;
+    //        Debug.Log("Grounded");
+    //    }
+
+    //}
+    
 }
