@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     CharacterController cc;
     Animation anim;
+    Rigidbody[] mesh;
+    public Camera main;
     public float speed = 6;
     public float jumpSpeed = 8;
     public float gravity = 20;
@@ -15,12 +17,14 @@ public class Movement : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animation>();
+        mesh = GetComponentsInChildren<Rigidbody>();
     }
 
 
 
     void Update()
     {
+
         if (cc.isGrounded)
         {
             anim.enabled = true;
@@ -30,15 +34,20 @@ public class Movement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
+                foreach(Rigidbody rb in mesh)
+                {
+                    rb.velocity = cc.velocity;
+                }
                 moveDirection.y = jumpSpeed;
             }
         }
         if(!cc.isGrounded)
         {
-          anim.enabled = false;
+            //cc.GetComponent<Collider>().transform.position = mesh.transform.position;
+            anim.enabled = false;
         }
-
+        //Vector3 camera = transform.position;
+        //main.transform.position = new Vector3(camera.x, 6, camera.z);
         moveDirection.y -= gravity * Time.deltaTime;
         cc.Move(moveDirection * Time.deltaTime);
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
