@@ -14,7 +14,7 @@ public class CheckpointSet : MonoBehaviour
         cpMaterial = checkPoint.GetComponent<Renderer>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.transform.CompareTag("Player"))
         {
