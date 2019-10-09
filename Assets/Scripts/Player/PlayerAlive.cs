@@ -25,7 +25,7 @@ public class PlayerAlive : MonoBehaviour
     {
         if(!isAlive)
         {
-            if (health > 0)
+            if (health > 0) // player respawn at last checkpoint
             {
                 movement.enabled = false;
                 gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -34,9 +34,15 @@ public class PlayerAlive : MonoBehaviour
                 isAlive = !isAlive;
                 movement.enabled = true;
             }
-            else if(health <= 0)
+            else if(health <= 0) // player death
             {
-                
+                // disabled player movement
+                gameObject.GetComponent<Movement>().enabled = false;
+
+                // disable animations on player so can ragdoll
+                gameObject.GetComponent<Animation>().enabled = false;
+
+                // trigger death event
             }
         }
     }
