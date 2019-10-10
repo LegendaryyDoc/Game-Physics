@@ -29,7 +29,7 @@ public class ParticleRotation : MonoBehaviour
         {
             euler.x = -rotateSpeed;
         }
-        else if(pSystem.transform.rotation.eulerAngles.x <= rotMin.x)
+        else if(pSystem.transform.rotation.x <= rotMin.x)
         {
             euler.x = rotateSpeed;
         }

@@ -5064,7 +5064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRotation: {x: 90, y: 0, z: 0}
-  minRotation: {x: -90, y: 0, z: 0}
+  minRotation: {x: 0, y: 0, z: 0}
   pSystem: {fileID: 348029987}
   rotateSpeed: 20
 --- !u!1 &412114729

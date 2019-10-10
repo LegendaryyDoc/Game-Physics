@@ -30,9 +30,9 @@ public class PlayerAlive : MonoBehaviour
             if (health > 0) // player respawn at last checkpoint
             {
                 movement.enabled = false;
-                rb.velocity = Vector3.zero;
                 gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
                 gameObject.transform.position = spawnPoint;
+                rb.velocity = Vector3.zero;
                 isAlive = !isAlive;
                 movement.enabled = true;
             }
