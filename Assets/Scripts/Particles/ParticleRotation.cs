@@ -4,38 +4,36 @@ using UnityEngine;
 
 public class ParticleRotation : MonoBehaviour
 {
-    public Vector3 maxRotation = new Vector3(0,0,20);
+    public Vector3 maxRotation = new Vector3(20,0,0);
     public Vector3 minRotation = new Vector3(0,0,0);
     public ParticleSystem pSystem;
     public float rotateSpeed = 1;
 
+    private Vector3 euler;
     private float rotationChange;
+    private Quaternion rotMax;
+    private Quaternion rotMin;
 
     private void Start()
     {
-        Debug.Log(pSystem.transform.rotation);
-        if(pSystem.transform.rotation.eulerAngles.z - maxRotation.z > pSystem.transform.rotation.eulerAngles.z - minRotation.z)
-        {
-            rotationChange = rotateSpeed;
-        }
-        else
-        {
-            rotationChange = -rotateSpeed;
-        }
+        rotMax = Quaternion.Euler(maxRotation);
+        rotMin = Quaternion.Euler(minRotation);
+
+        euler = new Vector3((rotateSpeed), 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pSystem.transform.rotation.eulerAngles.z > maxRotation.z)
+        if (pSystem.transform.rotation.x >= rotMax.x)
         {
-            rotationChange = -rotateSpeed;
+            euler.x = -rotateSpeed;
         }
-        else if(pSystem.transform.rotation.eulerAngles.z < minRotation.z)
+        else if(pSystem.transform.rotation.eulerAngles.x <= rotMin.x)
         {
-            rotationChange = rotateSpeed;
+            euler.x = rotateSpeed;
         }
 
-        pSystem.transform.rotation = new Quaternion(pSystem.transform.rotation.x, pSystem.transform.rotation.y, (pSystem.transform.rotation.z + (rotationChange * Time.deltaTime)), 1);
+        pSystem.transform.Rotate(euler * Time.deltaTime, Space.World);
     }
 }

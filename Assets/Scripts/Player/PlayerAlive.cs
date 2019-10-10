@@ -8,15 +8,17 @@ public class PlayerAlive : MonoBehaviour
     public Vector3 spawnPoint;
     public int health = 3;
 
+    private Rigidbody rb;
     private MeshRenderer player;
     private Movement movement;
 
     // Start is called before the first frame update
     void Start()
     {
-        isAlive = true;
+        isAlive = true; 
         movement = gameObject.GetComponent<Movement>();
         player = gameObject.GetComponent<MeshRenderer>();
+        rb = movement.gameObject.GetComponent<Rigidbody>();
         spawnPoint = gameObject.transform.position;
     }
 
@@ -28,9 +30,9 @@ public class PlayerAlive : MonoBehaviour
             if (health > 0) // player respawn at last checkpoint
             {
                 movement.enabled = false;
+                rb.velocity = Vector3.zero;
                 gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
                 gameObject.transform.position = spawnPoint;
-
                 isAlive = !isAlive;
                 movement.enabled = true;
             }

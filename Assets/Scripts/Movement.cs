@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    CharacterController cc;
-    Animation anim;
-    Rigidbody[] mesh;
+    [HideInInspector]public CharacterController cc;
+
     public Camera main;
     public float speed = 6;
     public float jumpSpeed = 8;
     public float gravity = 20;
     public float rotateSpeed = 2.0f;
+
+    private Animation anim;
+    private Rigidbody[] mesh;
     private Vector3 moveDirection = Vector3.zero;
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
