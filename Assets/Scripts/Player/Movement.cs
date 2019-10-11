@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-
+       
         if (cc.isGrounded)
         {
             anim.enabled = true;
@@ -37,22 +37,24 @@ public class Movement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                foreach(Rigidbody rb in mesh)
+                foreach (Rigidbody rb in mesh)
                 {
                     rb.velocity = cc.velocity;
                 }
                 moveDirection.y = jumpSpeed;
             }
+            
         }
+        // disabling animation to enable ragdoll when not grounded.
         if(!cc.isGrounded)
         {
-            //cc.GetComponent<Collider>().transform.position = mesh.transform.position;
             anim.enabled = false;
         }
-        //Vector3 camera = transform.position;
-        //main.transform.position = new Vector3(camera.x, 6, camera.z);
-        moveDirection.y -= gravity * Time.deltaTime;
-        cc.Move(moveDirection * Time.deltaTime);
+            moveDirection.y -= gravity * Time.deltaTime;
+            cc.Move(moveDirection * Time.deltaTime);
+        
+
+        // if/else to display different animations.
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
             anim.Play("Run");
