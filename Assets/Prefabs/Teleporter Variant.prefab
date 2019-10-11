@@ -101,7 +101,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000012384024774, guid: aca7795d3bfb385448c2893b68b67c81, type: 3}
       propertyPath: m_Name
-      value: Teleporter
+      value: Teleporter Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4000012365491782, guid: aca7795d3bfb385448c2893b68b67c81, type: 3}
       propertyPath: m_LocalPosition.x
