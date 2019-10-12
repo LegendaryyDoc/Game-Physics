@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public float gravity = 20;
     public float rotateSpeed = 2.0f;
 
+
     private Animation anim;
     private Rigidbody[] mesh;
     private Vector3 moveDirection = Vector3.zero;
@@ -27,7 +28,10 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-       
+         foreach (Rigidbody rb in mesh)
+                {
+                      cc.velocity.Set(rb.velocity.x, rb.velocity.y, rb.velocity.z); 
+                }
         if (cc.isGrounded)
         {
             anim.enabled = true;
@@ -37,10 +41,7 @@ public class Movement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                foreach (Rigidbody rb in mesh)
-                {
-                    rb.velocity = cc.velocity;
-                }
+               
                 moveDirection.y = jumpSpeed;
             }
             

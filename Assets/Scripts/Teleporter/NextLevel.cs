@@ -25,7 +25,7 @@ public class NextLevel : MonoBehaviour
             cc.velocity.Set(0, 0, 0);
 
             // teleport the player to the next location with a visual effect for coming in
-            player.transform.position = nextLevel.transform.position;
+            player.transform.root.position = nextLevel.transform.position;
             player.gameObject.SetActive(true);
 
             // enabled player movement
