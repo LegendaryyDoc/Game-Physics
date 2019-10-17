@@ -4,51 +4,43 @@
 
 public class RaycastBounceOffMirror : MonoBehaviour
 {
-    public int maxReflections = 100;
+    public LayerMask mask;
+    public float maxLength = 100f;
 
     private LineRenderer lr;
-    private int numberOfPositions;
-    private bool isActive = true;
+    public int maxReflections;
+    private RaycastHit hit;
+    private Ray ray;
+    private Vector3 direction;
 
     private void Start()
     {
-        numberOfPositions = 2;
+        maxReflections = 1;
         lr = GetComponent<LineRenderer>();
     }
 
     private void Update()
     {
-        while (isActive)
+        ray = new Ray(transform.position, transform.forward);
+        lr.positionCount = 1;
+        lr.SetPosition(0, transform.position);
+
+        for (int i = 0; i < maxReflections; i++)
         {
-            numberOfPositions++;
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, maxLength))
             {
-                lr.enabled = true;
-                lr.SetPosition(0, transform.position);
-                lr.SetPosition(1, hit.point);
-
-                if (hit.collider.transform.CompareTag("Mirror"))
+                lr.positionCount += 1;
+                lr.SetPosition(lr.positionCount - 1, hit.point);
+                ray = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));
+                if(hit.collider.gameObject.tag == "Mirror")
                 {
-                    lr.positionCount = numberOfPositions;
-
-                    Vector3[] arrPos = new Vector3[numberOfPositions];
-                    lr.GetPositions(arrPos);
-
-                    Vector3 pos = Vector3.Reflect(hit.point, hit.normal);
-                    lr.SetPosition(arrPos.Length - 1, pos);
+                    maxReflections++;
+                    continue;
                 }
-            }
-            else
-            {
-                isActive = false;
-            }
-
-            if(numberOfPositions > maxReflections)
-            {
-                isActive = false;
+                else
+                {
+                    break;
+                }
             }
         }
     }
