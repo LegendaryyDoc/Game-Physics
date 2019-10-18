@@ -39,7 +39,6 @@ public class PlayerAlive : MonoBehaviour
             else if(health <= 0) // player death
             {
                 // disabled player movement
-                gameObject.GetComponent<Movement>().enabled = false;
 
                 // disable animations on player so can ragdoll
                 gameObject.GetComponent<Animation>().enabled = false;
