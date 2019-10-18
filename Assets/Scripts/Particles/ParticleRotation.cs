@@ -6,7 +6,7 @@ public class ParticleRotation : MonoBehaviour
 {
     public Vector3 maxRotation = new Vector3(20,0,0);
     public Vector3 minRotation = new Vector3(0,0,0);
-    public ParticleSystem pSystem;
+    public GameObject pSystem;
     public float rotateSpeed = 1;
 
     private Vector3 euler;

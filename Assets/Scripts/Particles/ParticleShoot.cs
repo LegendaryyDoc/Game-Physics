@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleShoot : MonoBehaviour
 {
     public float fireTime;
+    public InteractableObjects IO;
 
     private ParticleSystem pSystem;
 
@@ -18,9 +19,12 @@ public class ParticleShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (IO.trig == true)
         {
-            pSystem.Play();
+            if (Input.GetMouseButtonDown(0))
+            {
+                pSystem.Play();
+            }
         }
     }
 }
