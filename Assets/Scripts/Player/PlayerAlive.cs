@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAlive : MonoBehaviour
 {
     public bool isAlive;
     public Vector3 spawnPoint;
     public int health = 3;
+    public Text healthBar;
 
     private Rigidbody rb;
     private MeshRenderer player;
@@ -25,6 +27,7 @@ public class PlayerAlive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthBar.text = "Health:" + health.ToString();
         if(!isAlive)
         {
             if (health > 0) // player respawn at last checkpoint
