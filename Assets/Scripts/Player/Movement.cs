@@ -64,7 +64,7 @@ public class Movement : MonoBehaviour
         // disabling animation to enable ragdoll when not grounded.
         if(!cc.isGrounded && isJumping.Equals(true))
         {
-                anim.Play("Jump");
+                anim.Stop();
         }
             moveDirection.y -= gravity * Time.deltaTime;
             cc.Move(moveDirection * Time.deltaTime);
