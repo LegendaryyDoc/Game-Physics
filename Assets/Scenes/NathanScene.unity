@@ -124,9 +124,9 @@ GameObject:
   - component: {fileID: 8566390}
   - component: {fileID: 8566389}
   - component: {fileID: 8566388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
-  m_TagString: Mirror
+  m_TagString: FinalMirror
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8566387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9299998, y: 0.3, z: -0.3699999}
+  m_LocalPosition: {x: 3.03, y: 0.3, z: 4.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1997196143}
@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParticleCannon
       objectReference: {fileID: 0}
+    - target: {fileID: 488908073274998066, guid: 041cf1ab7cf91204e8b554f00b9468e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 488908073274998067, guid: 041cf1ab7cf91204e8b554f00b9468e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,12 +351,12 @@ PrefabInstance:
     - target: {fileID: 488908073274998067, guid: 041cf1ab7cf91204e8b554f00b9468e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488908073274998067, guid: 041cf1ab7cf91204e8b554f00b9468e5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.21
       objectReference: {fileID: 0}
     - target: {fileID: 488908073274998067, guid: 041cf1ab7cf91204e8b554f00b9468e5,
         type: 3}
@@ -393,6 +398,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2045233122253290544, guid: 041cf1ab7cf91204e8b554f00b9468e5,
+        type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 127628684}
+    - target: {fileID: 2045233122253290544, guid: 041cf1ab7cf91204e8b554f00b9468e5,
+        type: 3}
+      propertyPath: textShown
+      value: Press Left Mouse Button to shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045233122253290544, guid: 041cf1ab7cf91204e8b554f00b9468e5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1343818296}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 041cf1ab7cf91204e8b554f00b9468e5, type: 3}
 --- !u!1 &127628683 stripped
@@ -412,24 +432,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &127628685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127628683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543343fe7d7b4944eb984fa06b170b88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: {fileID: 0}
-  textShown: No Text
-  text: {fileID: 0}
-  trig: 0
 --- !u!1 &144654339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2588,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxLength: 100
+  levelPass: 0
   maxReflections: 3
 --- !u!120 &1939979224
 LineRenderer:

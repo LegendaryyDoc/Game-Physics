@@ -7,6 +7,8 @@ public class RaycastBounceOffMirror : MonoBehaviour
     public LayerMask mask;
     public float maxLength = 100f;
 
+    [HideInInspector] public bool levelPass;
+
     private LineRenderer lr;
     public int maxReflections;
     private RaycastHit hit;
@@ -15,6 +17,7 @@ public class RaycastBounceOffMirror : MonoBehaviour
 
     private void Start()
     {
+        levelPass = false;
         maxReflections = 1;
         lr = GetComponent<LineRenderer>();
     }
@@ -37,8 +40,16 @@ public class RaycastBounceOffMirror : MonoBehaviour
                     maxReflections++;
                     continue;
                 }
+                else if(hit.collider.gameObject.tag == "FinalMirror")
+                {
+                    //Debug.Log("Mirror Level Pass");
+                    levelPass = true;
+                    break;
+                }
                 else
                 {
+                    //Debug.Log("Mirror Level Fail");
+                    levelPass = false;
                     break;
                 }
             }
