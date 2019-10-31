@@ -6,6 +6,7 @@ public class RaycastBounceOffMirror : MonoBehaviour
 {
     public LayerMask mask;
     public float maxLength = 100f;
+    public Material green;
 
     [HideInInspector] public bool levelPass;
 
@@ -44,6 +45,7 @@ public class RaycastBounceOffMirror : MonoBehaviour
                 {
                     //Debug.Log("Mirror Level Pass");
                     levelPass = true;
+                    hit.transform.gameObject.GetComponent<Renderer>().material = green;
                     break;
                 }
                 else

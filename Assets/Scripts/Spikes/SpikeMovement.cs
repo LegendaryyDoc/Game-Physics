@@ -11,27 +11,37 @@ public class SpikeMovement : MonoBehaviour
     private Vector3 startPos;
     private Vector3 endPos;
     private Rigidbody rb;
-
+    private float randStart;
+    private float current;
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         startPos = gameObject.transform.position;
         endPos = gameObject.transform.position + distanceAway;
         target = endPos;
+        randStart = Random.Range(1, 4);
+        current = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.position == endPos)
-        {
-            target = startPos;
-        }
-        else if(gameObject.transform.position == startPos)
-        {
-            target = endPos;
-        }
+        current += 1 * Time.deltaTime;
+            if (gameObject.transform.position == endPos)
+            {
+                if (current > randStart)
+                {
+                target = startPos;
+                current = 0;
+                }
+            }
+            else if (gameObject.transform.position == startPos)
+            {
+                target = endPos;
+            }
 
-        transform.position = Vector3.MoveTowards(gameObject.transform.position, target, speed);
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, target, speed);
+        
     }
+  
 }
