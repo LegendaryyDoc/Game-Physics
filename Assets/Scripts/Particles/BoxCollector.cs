@@ -7,6 +7,7 @@ public class BoxCollector : MonoBehaviour
     public int targetNumberOfParticlesCollected = 10;
     public Material boxMeter;
     public Material boxSlime;
+    public GameObject[] levelPassObject;
 
     private int currentNumberOfParticles = 0;
     private bool levelPass = false;
@@ -31,6 +32,15 @@ public class BoxCollector : MonoBehaviour
             if (currentNumberOfParticles >= targetNumberOfParticlesCollected)
             {
                 levelPass = true;
+            }
+        }
+
+        if(levelPass == true)
+        {
+            Debug.Log("LevelPass");
+            for(int i = 0; i < levelPassObject.Length; i++)
+            {
+                levelPassObject[i].SetActive(true);
             }
         }
     }
