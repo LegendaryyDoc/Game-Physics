@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIFadeIn : MonoBehaviour
 {
+    public bool win;
+
     //Character GameObject.
     public GameObject character;
 
@@ -83,14 +85,14 @@ public class UIFadeIn : MonoBehaviour
     private void Update()
 
     {
-        if (pa.health < 1 && canvas.alpha.Equals(0))
+        if (pa.health < 1 && canvas.alpha.Equals(0) || win == true)
         {
             FadeIn();
 
             Debug.Log("FadeIn");
         }
 
-        if (pa.health > 0 && canvas.alpha.Equals(1))
+        if (pa.health > 0 && canvas.alpha.Equals(1) || win == false)
         {
             FadeOut();
 

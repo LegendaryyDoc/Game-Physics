@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAlive : MonoBehaviour
 {
+    public Text LoseText;
     public bool isAlive;
     public Vector3 spawnPoint;
     public int health = 3;
@@ -47,6 +48,8 @@ public class PlayerAlive : MonoBehaviour
                 gameObject.GetComponent<Animation>().enabled = false;
 
                 // trigger death event
+
+                LoseText.text = "You Died!";
             }
         }
     }

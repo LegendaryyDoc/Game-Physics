@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIFade : MonoBehaviour
 {
+    public RaycastBounceOffMirror rb;
     public GameObject character;
     private PlayerAlive pa;
     private bool isAlive;
@@ -76,11 +77,11 @@ public class UIFade : MonoBehaviour
     {
 
 
-        if (pa.health < 1 && canvas.alpha.Equals(0))
+        if (pa.health < 1 && canvas.alpha.Equals(0) || rb.levelPass == true)
         {
             FadeIn();
         }
-        else if (pa.health > 0 && canvas.alpha.Equals(1))
+        else if (pa.health > 0 && canvas.alpha.Equals(1) || rb.levelPass == false)
         {
             FadeOut();
         }

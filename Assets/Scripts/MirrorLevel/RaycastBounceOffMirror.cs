@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /*  Get a RayCast(Light) to bounce off of a Mirror and keep doing that until the light doesn't hit a Mirror  */
 
 public class RaycastBounceOffMirror : MonoBehaviour
 {
+    public Text WinText;
     public LayerMask mask;
     public float maxLength = 100f;
     public Material green;
@@ -46,6 +48,7 @@ public class RaycastBounceOffMirror : MonoBehaviour
                     //Debug.Log("Mirror Level Pass");
                     levelPass = true;
                     hit.transform.gameObject.GetComponent<Renderer>().material = green;
+                    WinText.text = "You Win!";
                     break;
                 }
                 else
